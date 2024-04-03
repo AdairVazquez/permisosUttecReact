@@ -19,7 +19,7 @@ function NuevoPermiso() {
 
     const handleSave = async () =>{ //Es una funcion asincrona, manda a un segundo proceso
         try {//el await indica que el programa no termina hasta que realiza la funcion
-          const response = await axios.post('http://permisosuttec.site/api/permiso/guardar',{
+          const response = await axios.post('https://permisosuttec.site/api/permiso/guardar',{
             id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo})
             console.log(response.data)
             if(response.data === "Ok"){
@@ -33,7 +33,7 @@ function NuevoPermiso() {
       useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://permisosuttec.site/api/permiso?id=' + id, {
+                const response = await axios.get('https://permisosuttec.site/api/permiso?id=' + id, {
                     headers: {
                         Authorization: 'Bearer' + token
                     }
