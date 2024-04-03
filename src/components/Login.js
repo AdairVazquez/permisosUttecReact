@@ -18,7 +18,7 @@ function Login({setIsLoggedIn}) {
     const handleLogin = async (e) => {
         e.preventDefault();
 
-        const response = await axios.post('http://permisosuttec.site/api/login',{
+        const response = await axios.post('https://permisosuttec.site/api/login',{
             email: username,password:password
         });
 
