@@ -34,7 +34,7 @@ const Permisos = () => {
     let id_user = localStorage.getItem('id_usuario');
     console.log(id_user);
     try {
-      const response = await axios.post('https://permisosuttec.site/api/permiso/borrar',
+      await axios.post('https://permisosuttec.site/api/permiso/borrar',
       {
         'id' : id,
         'id_usuario' : id_user
