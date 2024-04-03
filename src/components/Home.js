@@ -5,10 +5,9 @@ import {Card} from 'react-bootstrap'
 import "./../styles/principal.css"; 
 
 /*Imagenes*/ 
-import est from '../img/est.svg'
-import as from '../img/as.gif'
+
 import cal from '../img/cal.gif'
-import hor from '../img/hor.gif'
+
 import res from '../img/res.gif'
 
 function Home() {

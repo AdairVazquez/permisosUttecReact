@@ -1,7 +1,6 @@
 import React, { useEffect,useState } from 'react'
 //import '../App.css';
 import Form from 'react-bootstrap/Form';
-import Alert from 'react-bootstrap/Alert';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
 
@@ -22,7 +21,7 @@ function NuevoPermiso() {
 
     const handleSave = async () =>{ //Es una funcion asincrona, manda a un segundo proceso
         try {//el await indica que el programa no termina hasta que realiza la funcion
-          const response = await axios.post('http://127.0.0.1:8000/api/permiso/guardar',{
+          const response = await axios.post('http://permisosuttec.site/api/permiso/guardar',{
             id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo})
             console.log(response.data)
             if(response.data == "Ok"){
@@ -35,7 +34,7 @@ function NuevoPermiso() {
 
       const fetchData = async () => {
         try {//el await indica que el programa no termina hasta que realiza la funcion
-          const response = await axios.get('http://127.0.0.1:8000/api/permiso?id=' + id,{
+          const response = await axios.get('http://permisosuttec.site/api/permiso?id=' + id,{
             headers:{
               Authorization: 'Bearer' + token
             }   
