@@ -46,12 +46,12 @@ function NuevoPermiso() {
         }
       }
 
-    useEffect(() =>{
-        setIdUsuario(localStorage.getItem('id_usuario'))
+      useEffect(() => {
+        setIdUsuario(localStorage.getItem('id_usuario'));
         if(id !== undefined){
-          fetchData()
+            fetchData();
         }
-    },[])
+    }, [fetchData, id]);
       
 
     return (
