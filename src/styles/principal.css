@@ -1,0 +1,43 @@
+.contenedor-tarjetas {
+    display: flex;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    text-align: center;
+    justify-content: space-around; /* Puedes ajustar esta propiedad según sea necesario */
+  }
+  
+.floating-button{
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 1000;
+    text-align: right;
+}
+
+.titulo{
+    font-style: normal;
+    color: black;
+    margin-top: 20px;
+}
+
+.tituloP{
+    font-style: bold;
+    color: green;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.subtitulo{
+    font-style: bold;
+    color: green;
+    margin: 20px;
+}
+
+hr{
+        height: 10px;
+        background-color: #042b09;
+}
+
+body{
+    background-color: #dfcdb3;
+}
