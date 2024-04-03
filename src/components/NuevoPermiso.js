@@ -38,6 +38,7 @@ function NuevoPermiso() {
             }   
         })
           console.log(response.data)
+          setToken()
           setFecha(response.data.fecha)
           setMotivo(response.data.motivo)
         } catch (error) {
