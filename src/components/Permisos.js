@@ -15,7 +15,7 @@ const Permisos = () => {
 
   const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get('http://permisosuttec.site/api/permisos?id_usuario=' + id_usuario,
+      const response = await axios.get('https://permisosuttec.site/api/permisos?id_usuario=' + id_usuario,
       {
         headers: {
           Authorization: 'Bearer ' + token,
