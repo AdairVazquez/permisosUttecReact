@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useCallback } from "react";
 import Menu from "./Menu";
 import { Button, Col, Container, Row, Table } from "react-bootstrap";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -28,7 +28,7 @@ const Permisos = () => {
     }
   }, [id_usuario, token]); 
 
-  
+
   const deleteRecord = async (id) => {
     console.log(id);
     let id_user = localStorage.getItem('id_usuario');
