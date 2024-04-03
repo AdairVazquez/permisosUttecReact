@@ -3,9 +3,7 @@ import React, { useEffect,useState } from 'react'
 import Form from 'react-bootstrap/Form';
 import Button from 'react-bootstrap/Button';
 import axios from 'axios';
-
-import { left } from '@popperjs/core';
-import { useNavigate, BrowserRouter, Switch, useParams } from 'react-router-dom'; 
+import { useNavigate, useParams } from 'react-router-dom'; 
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
@@ -24,7 +22,7 @@ function NuevoPermiso() {
           const response = await axios.post('http://permisosuttec.site/api/permiso/guardar',{
             id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo})
             console.log(response.data)
-            if(response.data == "Ok"){
+            if(response.data === "Ok"){
               navigate('/home')
             }
         } catch (error) {
