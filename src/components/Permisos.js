@@ -13,9 +13,9 @@ const Permisos = () => {
   const [id_usuario, setIdUsuario] = useState(0);
   const navigate = useNavigate();
 
-  const fetchData = async () => {
+  const fetchData = useCallback(async () => {
     try {
-      const response = await axios.get('https://permisosuttec.site/api/permisos?id_usuario=' + id_usuario,
+      const response = await axios.get('http://permisosuttec.site/api/permisos?id_usuario=' + id_usuario,
       {
         headers: {
           Authorization: 'Bearer ' + token,
@@ -26,8 +26,9 @@ const Permisos = () => {
     } catch (error) {
       console.log("Ocurrio un error: " + error)
     }
-  };
+  }, [id_usuario, token]); 
 
+  
   const deleteRecord = async (id) => {
     console.log(id);
     let id_user = localStorage.getItem('id_usuario');
