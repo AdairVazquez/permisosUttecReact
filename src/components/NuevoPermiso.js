@@ -23,7 +23,7 @@ function NuevoPermiso() {
             id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo})
             console.log(response.data)
             if(response.data === "Ok"){
-              navigate('/home')
+              navigate('/permisos')
             }
         } catch (error) {
           console.log()    
@@ -69,7 +69,7 @@ function NuevoPermiso() {
         <Navbar.Toggle style={{color:'white'}} aria-controls='basic.navbar-nav' />
         <Navbar.Collapse style={{color:'white'}} id='light-navbar-nav'>
             <Nav style={{color:'white'}} className='mr-auto'>
-                <Nav.Link style={{color:'white'}} as={Link} to="/home" className='custom-link'>Permisos</Nav.Link>
+                <Nav.Link style={{color:'white'}} as={Link} to="/permisos" className='custom-link'>Permisos</Nav.Link>
                 <Nav.Link style={{color:'white'}} as={Link} to="/nuevo" className='custom-link'>Nuevo</Nav.Link>
             </Nav>
         </Navbar.Collapse>

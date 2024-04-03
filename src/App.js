@@ -4,6 +4,7 @@ import Home from './components/Home';
 import Principal from './components/Principal';
 import NuevoPermiso from './components/NuevoPermiso';
 import React, { useState } from 'react';
+import Permisos from './components/Permisos';
 import './App.css';
 import { BrowserRouter, Route, Routes, Navigate } from 'react-router-dom';
 import Pdf from './components/Pdf';
@@ -19,6 +20,7 @@ function App() {
         <Route path='/home' element={isLoggedIn ? <Home/> : <Navigate to='/login' />}></Route>
         <Route exact path='/pdf' Component={Pdf}></Route>
         <Route path='permiso/nuevo/:id?' element={isLoggedIn ? <NuevoPermiso/> : <Navigate to='/' />}></Route>
+        <Route path='/permisos' element={isLoggedIn ? <Permisos/> : <Navigate to='/' />}></Route>
         <Route path='/*' element={<Navigate to="/" />} />
       </Routes>
     </BrowserRouter>
