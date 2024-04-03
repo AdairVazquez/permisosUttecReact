@@ -51,7 +51,7 @@ function NuevoPermiso() {
         if(id !== undefined){
           fetchData()
         }
-    },[])
+    },[fetchData, id])
       
 
     return (
