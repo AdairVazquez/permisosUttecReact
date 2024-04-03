@@ -30,29 +30,28 @@ function NuevoPermiso() {
         }
       }
 
-      const fetchData = async () => {
-        try {//el await indica que el programa no termina hasta que realiza la funcion
-          const response = await axios.get('http://permisosuttec.site/api/permiso?id=' + id,{
-            headers:{
-              Authorization: 'Bearer' + token
-            }   
-        })
-          console.log(response.data)
-          setToken()
-          setFecha(response.data.fecha)
-          setMotivo(response.data.motivo)
-        } catch (error) {
-          console.log()
-        }
-      }
-
       useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await axios.get('http://permisosuttec.site/api/permiso?id=' + id, {
+                    headers: {
+                        Authorization: 'Bearer' + token
+                    }
+                });
+                console.log(response.data);
+                setToken();
+                setFecha(response.data.fecha);
+                setMotivo(response.data.motivo);
+            } catch (error) {
+                console.log(error);
+            }
+        };
+    
         setIdUsuario(localStorage.getItem('id_usuario'));
-        if(id !== undefined){
+        if (id !== undefined) {
             fetchData();
         }
-    }, [fetchData, id]);
-      
+    }, [id, token]);
 
     return (
     <div className='sticky-top'>
