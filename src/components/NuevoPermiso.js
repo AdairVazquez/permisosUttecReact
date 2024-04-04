@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+import Permisos from './Permisos';
 import { useNavigate, useParams } from 'react-router-dom'
 import axios from 'axios';
 
@@ -22,7 +23,7 @@ function NuevoPermiso() {
       });
       console.log(response.data);
       if (response.data === "Ok") {
-        navigate('/home');
+        navigate('/permisos');
       }
     } catch (error) {
       console.log();
