@@ -10,11 +10,6 @@ import Button from 'react-bootstrap/Button';
 import "./../styles/principal.css"; 
 import {useNavigate, useParams} from 'react-router-dom'
 import axios from 'axios';
-import { useNavigate, useParams } from 'react-router-dom'; 
-import { Nav, Navbar } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
-
-
 
 function NuevoPermiso() {
   const [fecha,setFecha]= useState('')
@@ -26,7 +21,7 @@ function NuevoPermiso() {
 
   const handleSave = async () =>{ //Es una funcion asincrona, manda a un segundo proceso
     try {//el await indica que el programa no termina hasta que realiza la funcion
-      const response = await axios.post('https://permisosuttec.site/api/permiso/guardar',{
+      const response = await axios.post('https://perrmisosuttec.site/api/permiso/guardar',{
         id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo})
         console.log(response.data)
         if(response.data == "Ok"){
@@ -39,7 +34,7 @@ function NuevoPermiso() {
 
   const fetchData = async () => {
     try {//el await indica que el programa no termina hasta que realiza la funcion
-      const response = await axios.get('https://permisosuttec.site/api/permiso?id=' + id,{
+      const response = await axios.get('https://perrmisosuttec.site/api/permiso?id=' + id,{
         headers:{
           Authorization: 'Bearer' + token
         }   
@@ -59,43 +54,30 @@ useEffect(() =>{
     }
 },[])
 
-    return (
-    <div className='sticky-top'>
-        <div>
-        <Navbar style={{background: 'rgb(59,94,150)', color: 'white'}} expand='lg' className='custom-navbar sticky-top' >
-        <Navbar.Brand style={{color:'white'}} className='custom-brand sticky-top'> 
-              <img
-              alt=""
-              src="https://piuttec.uttecamac.edu.mx/Content/Images/Logo%20UTTEC_redime.png"
-              width="100"
-              height="30"
-              className="d-inline-block align-top ms-3"
-            />{' '}
-            Uttecamac Permisos</Navbar.Brand>
-        <Navbar.Toggle style={{color:'white'}} aria-controls='basic.navbar-nav' />
-        <Navbar.Collapse style={{color:'white'}} id='light-navbar-nav'>
-            <Nav style={{color:'white'}} className='mr-auto'>
-                <Nav.Link style={{color:'white'}} as={Link} to="/permisos" className='custom-link'>Permisos</Nav.Link>
-                <Nav.Link style={{color:'white'}} as={Link} to="/nuevo" className='custom-link'>Nuevo</Nav.Link>
-            </Nav>
-        </Navbar.Collapse>
-        </Navbar>
-        </div>
-        <div className='container mt-4'>
-            <Form>
-                <Form.Group className="mb-3" controlId="">
-                <Form.Label>Fecha</Form.Label>
-                <Form.Control type="date" value={fecha} onChange={(e) => setFecha(e.target.value)} placeholder="" />
-                </Form.Group>
-                <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
-                <Form.Label>Motivo</Form.Label>
-                <Form.Control as="textarea" value={motivo} onChange={(e) => setMotivo(e.target.value)} rows={3} />
-                </Form.Group>
-                <Button  variant="success" onClick={handleSave}>Enviar</Button>{' '}
+  return (
+    <div>
+      <Menu/>
+      <div className='ms-5 me-5 mt-5'>
+        <h1 className='titulo'>Nuevo Permiso</h1>
+
+            <Form style={{textAlign:'center'}}>
+            <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+                <Form.Label style={{color:'black'}} column sm="1">Fecha: </Form.Label>
+                <Col >
+                  <Form.Control type="date" value={fecha} onChange={(e) => setFecha(e.target.value)} />
+                </Col>
+                <Form.Label style={{color:'black'}} column sm="2">Ingrese el motivo: </Form.Label>
+                <Col >
+                  <Form.Control as="textarea" rows={3} placeholder="Describa brevemente el motivo" 
+                    value={motivo} onChange={(e) => setMotivo(e.target.value)}/>
+                </Col>
+            </Form.Group>
+
+            <Button style={{margin:'25px'}} variant="success" onClick={handleSave} size="lg">Enviar</Button>
             </Form>
         </div>
     </div>
-      );
+  )
 }
 
 export default NuevoPermiso
