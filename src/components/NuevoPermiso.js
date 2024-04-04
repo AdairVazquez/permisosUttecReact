@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom'; 
 import { Nav, Navbar } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
+import Menu from './Menu';
 
 
 function NuevoPermiso() {
@@ -54,27 +54,8 @@ function NuevoPermiso() {
     }, [id, token]);
 
     return (
-    <div className='sticky-top'>
-        <div>
-        <Navbar style={{background: 'rgb(59,94,150)', color: 'white'}} expand='lg' className='custom-navbar sticky-top' >
-        <Navbar.Brand style={{color:'white'}} className='custom-brand sticky-top'> 
-              <img
-              alt=""
-              src="https://piuttec.uttecamac.edu.mx/Content/Images/Logo%20UTTEC_redime.png"
-              width="100"
-              height="30"
-              className="d-inline-block align-top ms-3"
-            />{' '}
-            Uttecamac Permisos</Navbar.Brand>
-        <Navbar.Toggle style={{color:'white'}} aria-controls='basic.navbar-nav' />
-        <Navbar.Collapse style={{color:'white'}} id='light-navbar-nav'>
-            <Nav style={{color:'white'}} className='mr-auto'>
-                <Nav.Link style={{color:'white'}} as={Link} to="/permisos" className='custom-link'>Permisos</Nav.Link>
-                <Nav.Link style={{color:'white'}} as={Link} to="/nuevo" className='custom-link'>Nuevo</Nav.Link>
-            </Nav>
-        </Navbar.Collapse>
-        </Navbar>
-        </div>
+    <div>
+       <Menu/>
         <div className='container mt-4'>
             <Form>
                 <Form.Group className="mb-3" controlId="">
@@ -89,6 +70,7 @@ function NuevoPermiso() {
             </Form>
         </div>
     </div>
+  </div>
       );
 }
 
