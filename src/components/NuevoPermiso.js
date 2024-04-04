@@ -17,7 +17,7 @@ function NuevoPermiso() {
 
   const handleSave = async () => {
     try {
-      const response = await axios.post('https://perrmisosuttec.site/api/permiso/guardar', {
+      const response = await axios.post('https://permisosuttec.site/api/permiso/guardar', {
         id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo
       });
       console.log(response.data);
