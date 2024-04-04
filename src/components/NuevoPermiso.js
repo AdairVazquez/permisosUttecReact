@@ -1,59 +1,86 @@
-import React, { useEffect,useState } from 'react'
-//import '../App.css';
+//rfce
+import React, { useState, useEffect } from 'react'
+
+import Menu from "./Menu";
+import 'bootstrap/dist/css/bootstrap.min.css';
 import Form from 'react-bootstrap/Form';
+import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
+
+import "./../styles/principal.css"; 
+import {useNavigate, useParams} from 'react-router-dom'
 import axios from 'axios';
 import { useNavigate, useParams } from 'react-router-dom'; 
-import Menu from './Menu';
+import { Nav, Navbar } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 
 
 function NuevoPermiso() {
-        const [fecha,setFecha]= useState('')
-        const [motivo,setMotivo]= useState('')
-        const [token,setToken]= useState('')
-        const [id_usuario,setIdUsuario]= useState(0)
-        const {id}= useParams()//->Recoge los parametros a utiliza   
-        const navigate= useNavigate()//->Sirve para navegar en las rutas
+  const [fecha,setFecha]= useState('')
+  const [motivo,setMotivo]= useState('')
+  const [token,setToken]= useState('')
+  const [id_usuario,setIdUsuario]= useState(0)
+  const {id}= useParams()//->Recoge los parametros a utilizar
+  const navigate= useNavigate()//->Sirve para navegar en las rutas
 
-    const handleSave = async () =>{ //Es una funcion asincrona, manda a un segundo proceso
-        try {//el await indica que el programa no termina hasta que realiza la funcion
-          const response = await axios.post('https://permisosuttec.site/api/permiso/guardar',{
-            id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo})
-            console.log(response.data)
-            if(response.data === "Ok"){
-              navigate('/permisos')
-            }
-        } catch (error) {
-          console.log()    
+  const handleSave = async () =>{ //Es una funcion asincrona, manda a un segundo proceso
+    try {//el await indica que el programa no termina hasta que realiza la funcion
+      const response = await axios.post('https://permisosuttec.site/api/permiso/guardar',{
+        id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo})
+        console.log(response.data)
+        if(response.data == "Ok"){
+          navigate('/home')
         }
-      }
+    } catch (error) {
+      console.log()
+    }
+  }
 
-      useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await axios.get('https://permisosuttec.site/api/permiso?id=' + id, {
-                    headers: {
-                        Authorization: 'Bearer' + token
-                    }
-                });
-                console.log(response.data);
-                setToken();
-                setFecha(response.data.fecha);
-                setMotivo(response.data.motivo);
-            } catch (error) {
-                console.log(error);
-            }
-        };
-    
-        setIdUsuario(localStorage.getItem('id_usuario'));
-        if (id !== undefined) {
-            fetchData();
-        }
-    }, [id, token]);
+  const fetchData = async () => {
+    try {//el await indica que el programa no termina hasta que realiza la funcion
+      const response = await axios.get('https://permisosuttec.site/api/permiso?id=' + id,{
+        headers:{
+          Authorization: 'Bearer' + token
+        }   
+    })
+      console.log(response.data)
+      setFecha(response.data.fecha)
+      setMotivo(response.data.motivo)
+    } catch (error) {
+      console.log()
+    }
+  }
+
+useEffect(() =>{
+    setIdUsuario(localStorage.getItem('id_usuario'))
+    if(id !== undefined){
+      fetchData()
+    }
+},[])
 
     return (
-    <div>
-       <Menu/>
+    <div className='sticky-top'>
+        <div>
+        <Navbar style={{background: 'rgb(59,94,150)', color: 'white'}} expand='lg' className='custom-navbar sticky-top' >
+        <Navbar.Brand style={{color:'white'}} className='custom-brand sticky-top'> 
+              <img
+              alt=""
+              src="https://piuttec.uttecamac.edu.mx/Content/Images/Logo%20UTTEC_redime.png"
+              width="100"
+              height="30"
+              className="d-inline-block align-top ms-3"
+            />{' '}
+            Uttecamac Permisos</Navbar.Brand>
+        <Navbar.Toggle style={{color:'white'}} aria-controls='basic.navbar-nav' />
+        <Navbar.Collapse style={{color:'white'}} id='light-navbar-nav'>
+            <Nav style={{color:'white'}} className='mr-auto'>
+                <Nav.Link style={{color:'white'}} as={Link} to="/permisos" className='custom-link'>Permisos</Nav.Link>
+                <Nav.Link style={{color:'white'}} as={Link} to="/nuevo" className='custom-link'>Nuevo</Nav.Link>
+            </Nav>
+        </Navbar.Collapse>
+        </Navbar>
+        </div>
         <div className='container mt-4'>
             <Form>
                 <Form.Group className="mb-3" controlId="">
@@ -68,7 +95,7 @@ function NuevoPermiso() {
             </Form>
         </div>
     </div>
-    );
+      );
 }
 
-export default NuevoPermiso;
+export default NuevoPermiso
