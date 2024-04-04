@@ -70,8 +70,7 @@ function NuevoPermiso() {
             </Form>
         </div>
     </div>
-  </div>
-      );
+    );
 }
 
 export default NuevoPermiso;
