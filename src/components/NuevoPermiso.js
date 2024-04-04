@@ -48,12 +48,28 @@ function NuevoPermiso() {
     }
   }
 
-useEffect(() =>{
-    setIdUsuario(localStorage.getItem('id_usuario'))
-    if(id !== undefined){
-      fetchData()
+  useEffect(() => {
+    const fetchData = async () => {
+        try {
+            const response = await axios.get('https://permisosuttec.site/api/permiso?id=' + id, {
+                headers: {
+                    Authorization: 'Bearer ' + token 
+                }
+            });
+            console.log(response.data);
+            setToken('');
+            setFecha(response.data.fecha);
+            setMotivo(response.data.motivo);
+        } catch (error) {
+            console.log(error);
+        }
+    };
+
+    setIdUsuario(localStorage.getItem('id_usuario'));
+    if (id !== undefined) {
+        fetchData();
     }
-},[])
+}, [id, token, fetchData]); 
 
   return (
     <div>
