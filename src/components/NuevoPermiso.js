@@ -24,7 +24,7 @@ function NuevoPermiso() {
       const response = await axios.post('https://perrmisosuttec.site/api/permiso/guardar',{
         id: id | 0, id_usuario: id_usuario, fecha: fecha, motivo: motivo})
         console.log(response.data)
-        if(response.data == "Ok"){
+        if(response.data === "Ok"){
           navigate('/home')
         }
     } catch (error) {
@@ -39,6 +39,7 @@ function NuevoPermiso() {
           Authorization: 'Bearer' + token
         }   
     })
+      setToken()
       console.log(response.data)
       setFecha(response.data.fecha)
       setMotivo(response.data.motivo)
