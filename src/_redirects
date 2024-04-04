@@ -1,6 +1,1 @@
-/login /login 200
-/home /home 200
-/ / 200
-/permisos /permisos 200
-/permiso/nuevo/* /permiso/nuevo/:splat 200
-/pdf /pdf 200
+/* /index.html 200
