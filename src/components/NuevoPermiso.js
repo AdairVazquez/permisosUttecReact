@@ -53,7 +53,7 @@ function NuevoPermiso() {
         try {
             const response = await axios.get('https://permisosuttec.site/api/permiso?id=' + id, {
                 headers: {
-                    Authorization: 'Bearer ' + token // Corregí el espacio en blanco aquí
+                    Authorization: 'Bearer ' + token
                 }
             });
             console.log(response.data);
@@ -70,8 +70,8 @@ function NuevoPermiso() {
         fetchData();
     }
 
-    // Mover fetchData aquí dentro del useEffect elimina la advertencia de dependencias
 }, [id, token]);
+
 
   return (
     <div>
