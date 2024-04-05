@@ -55,7 +55,7 @@ function Login({setIsLoggedIn}) {
                     <Form.Label className="color-letras">Correo electronico</Form.Label>
                     <Form.Control type="email" value={username} onChange={(e) => {setUserName(e.target.value)}} placeholder="name@example.com" />
                     <Form.Label className='mt-1 color-letras'>Contraseña</Form.Label>
-                    <Form.Control type="password" value={password}  onChange={(e) => {setPassword(e.target.value)}} placeholder="" />
+                    <Form.Control type="password" value={password}  onChange={(e) => {setPassword(e.target.value)}} placeholder="Ingresa tu contraseña" />
                     <br /><center><a className=' mt-2' href="./pdf" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a><br />
                     <Button className=' mt-2' type="submit" variant="outline-success">Ingresar</Button>{' '}</center>
                 </Form.Group>
