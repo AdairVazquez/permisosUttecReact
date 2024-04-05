@@ -53,7 +53,7 @@ function Login({setIsLoggedIn}) {
                 <Form style={{marginTop: '40px', marginLeft: '300px', marginRight: '300px' }} onSubmit={handleLogin}>
                 <Form.Group className="mb-3 ml-5" controlId="exampleForm.ControlInput1">
                     <Form.Label>Correo electronico</Form.Label>
-                    <Form.Control type="email" value={username} onChange={(e) => {setUsername(e.target.value)}} placeholder="name@example.com" />
+                    <Form.Control type="email" value={username} onChange={(e) => {setUserName(e.target.value)}} placeholder="name@example.com" />
                     <Form.Label className='mt-1'>Contraseña</Form.Label>
                     <Form.Control type="password" value={password}  onChange={(e) => {setPassword(e.target.value)}} placeholder="name@example.com" />
                     <br /><center><a className=' mt-2' href="./pdf" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a><br />
