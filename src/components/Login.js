@@ -37,29 +37,31 @@ function Login({setIsLoggedIn}) {
     }
 
     return(
-      <div className='container'>
-        <div className='frame'>
-            <div className='nav links'> 
-                    <h1 className='signin-active'>Inicio de sesión</h1>
-                    { error && <Alert variant="danger">{error}</Alert> }
+      <div >
+            <div className='ms-5 me-5 mt-5'>
+                <center>
+                <img
+                 alt=""
+                 src="https://piuttec.uttecamac.edu.mx/Content/Images/Logo%20UTTEC_redime.png"
+                 width="300"
+                 height="100"
+                 className="d-inline-block align-top ms-3"
+                />
+                <h1 className='mt-5'>SISTEMA DE GESTIÓN DE DÍAS ECONÓMICOS</h1>
+                </center>
+                {error && <Alert variant='danger'>{error}</Alert>}
+                <Form style={{marginTop: '40px', marginLeft: '300px', marginRight: '300px' }} onSubmit={handleLogin}>
+                <Form.Group className="mb-3 ml-5" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Correo electronico</Form.Label>
+                    <Form.Control type="email" value={username} onChange={(e) => {setUsername(e.target.value)}} placeholder="name@example.com" />
+                    <Form.Label className='mt-1'>Contraseña</Form.Label>
+                    <Form.Control type="password" value={password}  onChange={(e) => {setPassword(e.target.value)}} placeholder="name@example.com" />
+                    <br /><center><a className=' mt-2' href="./pdf" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a><br />
+                    <Button className=' mt-2' type="submit" variant="outline-success">Ingresar</Button>{' '}</center>
+                </Form.Group>
+                </Form>
             </div>
-                    <Form className="form-signin" onSubmit={handleLogin}>
-                    <Form.Group  controlId="exampleForm.ControlInput1">
-                        <Form.Label>Correo electronico: </Form.Label>
-                        <Col>
-                            <Form.Control className='form-styling' type="email" placeholder="name@example.com" value={username} onChange={(e) =>{setUserName(e.target.value)}} />
-                        </Col>
-                        <Form.Label>Contraseña: </Form.Label>
-                        <Col>
-                            <Form.Control className='form-styling' type="password" placeholder="Password" value={password} onChange={(e) =>{setPassword(e.target.value)}}/>
-                        </Col>
-                    </Form.Group>
-                    <div className='btn-animate' >
-                        <Button className='btn-signin' type="submit">Acceder</Button>
-                    </div>
-                    </Form>
         </div>
-    </div>
     );
 }
 
