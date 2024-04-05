@@ -47,14 +47,14 @@ function Login({setIsLoggedIn}) {
                  height="100"
                  className="d-inline-block align-top ms-3"
                 />
-                <h1 className='mt-5'>SISTEMA DE GESTIÓN DE DÍAS ECONÓMICOS</h1>
+                <h1 className='mt-5' style="color: black;">SISTEMA DE GESTIÓN DE DÍAS ECONÓMICOS</h1>
                 </center>
                 {error && <Alert variant='danger'>{error}</Alert>}
                 <Form style={{marginTop: '40px', marginLeft: '300px', marginRight: '300px' }} onSubmit={handleLogin}>
                 <Form.Group className="mb-3 ml-5" controlId="exampleForm.ControlInput1">
-                    <Form.Label>Correo electronico</Form.Label>
+                    <Form.Label style="color: black;">Correo electronico</Form.Label>
                     <Form.Control type="email" value={username} onChange={(e) => {setUserName(e.target.value)}} placeholder="name@example.com" />
-                    <Form.Label className='mt-1'>Contraseña</Form.Label>
+                    <Form.Label className='mt-1' style="color: black;">Contraseña</Form.Label>
                     <Form.Control type="password" value={password}  onChange={(e) => {setPassword(e.target.value)}} placeholder="name@example.com" />
                     <br /><center><a className=' mt-2' href="./pdf" target="_blank" rel="noopener noreferrer">Aviso de privacidad</a><br />
                     <Button className=' mt-2' type="submit" variant="outline-success">Ingresar</Button>{' '}</center>
